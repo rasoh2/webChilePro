@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-
 import logo from "../assets/img/logo.png";
 
-export default function NavBar() {
+export default function NavBar({ total }) {
   return (
     <nav className='navbar navbar-expand-lg bg-body-tertiary'>
       <div className='container-fluid'>
@@ -17,16 +16,19 @@ export default function NavBar() {
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <a className='nav-link active' aria-current='page' href='/'>
+              <Link className='nav-link active' aria-current='page' to='/'>
                 Home
-              </a>
+              </Link>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='/tipo'>
+              <Link className='nav-link' to='/tipo'>
                 Presupuesto
-              </a>
+              </Link>
             </li>
           </ul>
+        </div>
+        <div className='d-flex align-items-center'>
+          <span className='badge bg-primary ms-3'>Total: ${total}</span>
         </div>
       </div>
     </nav>

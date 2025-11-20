@@ -22,7 +22,7 @@ export default function Tipo() {
           Es la solución ideal si buscas un desarrollo rápido, un presupuesto optimizado y la capacidad de
           gestionar tu propio contenido de manera intuitiva. Es perfecto para blogs, portfolios y tiendas
           online sencillas que necesitan lanzarse al mercado sin demoras.'
-          onSelect={() => handleSeleccion("wordpress", 1.0)}
+          onSelect={() => handleSeleccion("Paginas echas poor planillas", 1.0)}
         />
 
         {/* CARD A MEDIDA */}
@@ -34,7 +34,7 @@ export default function Tipo() {
           Este enfoque ofrece flexibilidad ilimitada para funcionalidades únicas, integraciones complejas y un
           rendimiento optimizado. Es la elección estratégica para aplicaciones web específicas, proyectos ambiciosos
           o empresas que requieren control total y escalabilidad.'
-          onSelect={() => handleSeleccion("medida", 2.5)}
+          onSelect={() => handleSeleccion("Paginas echas a medida", 2.5)}
         />
       </div>
     </div>
