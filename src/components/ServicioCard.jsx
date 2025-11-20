@@ -1,4 +1,10 @@
-export default function ServicioCard({ nombre, descripcion, precio, onAdd }) {
+export default function ServicioCard({
+  nombre,
+  descripcion,
+  precio,
+  seleccionado,
+  onToggle,
+}) {
   return (
     <div className='card shadow p-3' style={{ width: "20rem" }}>
       <div className='card-body'>
@@ -8,13 +14,10 @@ export default function ServicioCard({ nombre, descripcion, precio, onAdd }) {
         <p className='fw-bold text-success mb-3'>${precio.toLocaleString()}</p>
 
         <button
-          className='btn btn-primary w-100'
-          onClick={() => {
-            console.log('ServicioCard:onClick ->', { nombre, precio });
-            onAdd();
-          }}
+          className={`btn w-100 ${seleccionado ? "btn-danger" : "btn-primary"}`}
+          onClick={onToggle}
         >
-          Agregar presupuesto
+          {seleccionado ? "Quitar del presupuesto" : "Agregar al presupuesto"}
         </button>
       </div>
     </div>
