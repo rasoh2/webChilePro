@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import Contacto from "./pages/Contacto.jsx";
 import NavBar from "./components/NavBar.jsx";
 import Home from "./pages/Home.jsx";
 import Tipo from "./pages/Tipo.jsx";
@@ -30,6 +31,7 @@ export default function App() {
             />
           }
         />
+        <Route path='/contacto' element={<Contacto />} />
       </Routes>
     </BrowserRouter>
   );

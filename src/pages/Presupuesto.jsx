@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { servicios } from "../db/data.js";
 import ServicioCard from "../components/ServicioCard";
 import ResultadoPresupuesto from "../components/ResultadoPresupuesto";
+import { Link } from "react-router-dom";
 
 export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   const location = useLocation();
@@ -10,11 +11,18 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   const { tipo, multiplicador } = location.state || {};
   const [seleccionados, setSeleccionados] = useState({});
 
-  // Inicializa total y seleccionados al montar
+  // Definir precios base según tipo
+  const preciosBase = {
+    Plantilla: 50000,
+    Hecha: 200000,
+  };
+
+  // Inicializa total con precio base y seleccionados al montar
   useEffect(() => {
-    setTotal(0);
+    const base = preciosBase[tipo] || 0;
+    setTotal(base);
     setSeleccionados({});
-  }, [setTotal]);
+  }, [setTotal, tipo]);
 
   // Reset multiplicador y total al salir de la página
   useEffect(() => {
@@ -39,12 +47,12 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   };
 
   if (!tipo) {
-    navigate("/tipo"); // si alguien entra sin elegir tipo, lo redirige
+    navigate("/tipo"); // redirige si no hay tipo
     return null;
   }
 
   return (
-    <div className='container mt-4'>
+    <div className='container mt-5 pb-4'>
       <h2 className='text-center text-primary mb-4'>
         Servicios disponibles para: <span className='text-success'>{tipo}</span>
       </h2>
@@ -63,7 +71,25 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
         ))}
       </div>
 
-      <ResultadoPresupuesto total={total} />
+      {/* Botón centrado fuera del row */}
+      <div className='row mt-5'>
+        <div className='col-md-4 '></div>
+        <div className='col-md-4 d-flex -5'>
+          <Link
+            to='/contacto'
+            state={{ presupuesto: total }}
+            className='btn btn-success'
+          >
+            Ir a Contacto y enviar presupuesto
+          </Link>
+        </div>
+        <div className='col-md-4'></div>
+      </div>
+
+      {/* ResultadoPresupuesto oculto */}
+      <div className='d-none'>
+        <ResultadoPresupuesto total={total} />
+      </div>
     </div>
   );
 }

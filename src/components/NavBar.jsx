@@ -3,13 +3,13 @@ import logo from "../assets/img/logo.png";
 
 export default function NavBar({ total }) {
   return (
-    <nav className='navbar navbar-expand-lg bg-body-tertiary'>
+    <nav className='navbar navbar-expand-lg bg-body-tertiary fixed-top'>
       <div className='container-fluid'>
         <Link className='navbar-brand' to='/'>
           <img
             src={logo}
             alt='Logo'
-            style={{ height: "40px", marginRight: "10px" }}
+            style={{ height: "70px", marginRight: "20px" }}
           />
           WCP
         </Link>
@@ -25,10 +25,24 @@ export default function NavBar({ total }) {
                 Presupuesto
               </Link>
             </li>
+            <li className='nav-item'>
+              <Link className='nav-link' to='/contacto'>
+                Contacto
+              </Link>
+            </li>
           </ul>
         </div>
-        <div className='d-flex align-items-center'>
-          <span className='badge bg-primary ms-3'>Total: ${total}</span>
+        <div className='d-flex align-items-center '>
+          <span
+            className='badge bg-primary ms-3 fs-4 px-4 py-2 me-5'
+            style={{
+              fontWeight: "bold",
+              fontSize: "1.5rem",
+              letterSpacing: "1px",
+            }}
+          >
+            Total: ${Number(total).toLocaleString()}
+          </span>
         </div>
       </div>
     </nav>
