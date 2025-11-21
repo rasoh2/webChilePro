@@ -7,7 +7,7 @@ export default function Contacto() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Aca se debería envíale el e mail al correo  ingresados");
+    alert("Aca se debería enviar el e-mail al correo ingresados");
   };
 
   return (
