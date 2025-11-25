@@ -10,7 +10,7 @@ export default function Contacto() {
   };
 
   return (
-    <div className='container my-5'>
+    <div className='container-fluid w-100 my-5'>
       <div className='row justify-content-center'>
         <div className='col-lg-8 col-xl-6'>
           <h2 className='text-center mb-4'>Contáctenos</h2>

@@ -69,13 +69,13 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   }
 
   return (
-    <div className='container mt-5 pb-4'>
-      <h2 className='text-center text-primary mb-4'>
+    <div className='container h-100 mt-5 pt-5 pb-4'>
+      <h2 className='text-center text-primary m-3'>
         Servicios disponibles para: <span className='text-success'>{tipo}</span>
       </h2>
-      <div className='row g-4'>
+      <div className='d-flex flex-wrap justify-content-center gap-4'>
         {servicios.map((serv) => (
-          <div className='col-md-4' key={serv.id}>
+          <div key={serv.id}>
             <ServicioCard
               nombre={serv.nombre}
               descripcion={serv.descripcion}

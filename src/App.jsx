@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar.jsx";
 import Home from "./pages/Home.jsx";
 import Tipo from "./pages/Tipo.jsx";
 import Presupuesto from "./pages/Presupuesto.jsx";
+import Footer from "./components/Footer.jsx";
 
 export default function App() {
   const [total, setTotal] = useState(0);
@@ -33,6 +34,7 @@ export default function App() {
         />
         <Route path='/contacto' element={<Contacto />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

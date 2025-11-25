@@ -6,8 +6,11 @@ export default function ServicioCard({
   onToggle,
 }) {
   return (
-    <div className='card shadow p-3' style={{ width: "20rem" }}>
-      <div className='card-body'>
+    <div
+      className='card shadow p-3 d-flex flex-column align-items-center'
+      style={{ width: "20rem" }}
+    >
+      <div className='card-body d-flex flex-column align-items-center text-center'>
         <h5 className='card-title'>{nombre}</h5>
         <p className='card-text'>{descripcion}</p>
 

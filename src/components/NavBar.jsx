@@ -32,7 +32,19 @@ export default function NavBar({ total }) {
             </li>
           </ul>
         </div>
-        <div className='d-flex align-items-center '>
+        <button
+          className='navbar-toggler ms-auto'
+          type='button'
+          data-bs-toggle='collapse'
+          data-bs-target='#navbarNav'
+          aria-controls='navbarNav'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          style={{ marginLeft: "auto" }}
+        >
+          <span className='navbar-toggler-icon'></span>
+        </button>
+        <div className='d-flex align-items-center d-none d-lg-block'>
           <span
             className='badge bg-primary ms-3 fs-4 px-4 py-2 me-5'
             style={{
