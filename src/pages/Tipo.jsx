@@ -6,12 +6,12 @@ import Card from "../components/Card";
 export default function Tipo() {
   const navigate = useNavigate();
 
-  const handleSeleccion = (tipo, multi) => {
-    navigate("/presupuesto", { state: { tipo, multiplicador: multi } });
+  const handleSeleccion = (tipo, multi, base) => {
+    navigate("/presupuesto", { state: { tipo, multiplicador: multi, base } });
   };
 
   return (
-    <div className='container mt-4'>
+    <div className='container mt-5'>
       <h2 className='text-center mb-4 '>Elige el tipo de proyecto</h2>
       <div
         className='d-flex flex-wrap justify-content-evenly gap-4'
@@ -21,13 +21,19 @@ export default function Tipo() {
           imagen={wpImg}
           titulo='Página WordPress'
           descripcion='Esta opción utiliza plataformas líderes con plantillas profesionales preexistentes. Es la solución ideal si buscas un desarrollo rápido, un presupuesto optimizado y la capacidad de gestionar tu propio contenido de manera intuitiva. Es perfecto para blogs, portfolios y tiendas online sencillas que necesitan lanzarse al mercado sin demoras. Permite una rápida puesta en marcha y facilita el mantenimiento sin requerir conocimientos avanzados de programación.'
-          onSelect={() => handleSeleccion("Paginas echas con plantillas", 1.0)}
+          precio={50000}
+          onSelect={() =>
+            handleSeleccion("Paginas echas con plantillas", 1.0, 50000)
+          }
         />
         <Card
           imagen={jsImg}
           titulo='Página a medida (JS/Python)'
           descripcion='En esta opción creamos tu proyecto desde cero utilizando tecnologías robustas como JavaScript y Python. Este enfoque ofrece flexibilidad ilimitada para funcionalidades únicas, integraciones complejas y un rendimiento optimizado. Es la elección estratégica para aplicaciones web específicas, proyectos ambiciosos o empresas que requieren control total, escalabilidad a largo plazo y una base tecnológica completamente personalizada.'
-          onSelect={() => handleSeleccion("Paginas echas a medida", 2.5)}
+          precio={150000}
+          onSelect={() =>
+            handleSeleccion("Paginas echas a medida", 2.5, 150000)
+          }
         />
       </div>
     </div>
