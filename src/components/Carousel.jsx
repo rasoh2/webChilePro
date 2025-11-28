@@ -9,6 +9,7 @@ export default function Carousel() {
       id='carouselExampleAutoplaying'
       className='carousel slide'
       data-bs-ride='carousel'
+      data-bs-theme='dark'
     >
       <div className='carousel-inner'>
         <div className='carousel-item active'>
@@ -29,8 +30,7 @@ export default function Carousel() {
           <img
             src={imagen3}
             className='d-block w-100'
-            alt='Imagen de pagina web a medida con python
-          '
+            alt='Imagen de pagina web a medida con python'
           />
         </div>
       </div>

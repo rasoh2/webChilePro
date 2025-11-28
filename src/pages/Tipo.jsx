@@ -20,19 +20,39 @@ export default function Tipo() {
         <Card
           imagen={wpImg}
           titulo='Página WordPress'
-          descripcion='Esta opción utiliza plataformas líderes con plantillas profesionales preexistentes. Es la solución ideal si buscas un desarrollo rápido, un presupuesto optimizado y la capacidad de gestionar tu propio contenido de manera intuitiva. Es perfecto para blogs, portfolios y tiendas online sencillas que necesitan lanzarse al mercado sin demoras. Permite una rápida puesta en marcha y facilita el mantenimiento sin requerir conocimientos avanzados de programación.'
+          descripcion={
+            <>
+              Esta opción utiliza plataformas líderes con plantillas
+              profesionales preexistentes. Es la solución ideal si buscas un
+              desarrollo rápido, un presupuesto optimizado y la capacidad de
+              gestionar tu propio contenido de manera intuitiva. Es perfecto
+              para blogs, portfolios y tiendas online sencillas que necesitan
+              lanzarse al mercado sin demoras. Permite una rápida puesta en
+              marcha y facilita el mantenimiento sin requerir conocimientos
+              avanzados de programación.
+              <br />
+              Ejemplo:{" "}
+              <a
+                href='https://vitrinazocl.wixsite.com/constructora-cumo'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                www.cumo.cl
+              </a>
+            </>
+          }
           precio={50000}
           onSelect={() =>
-            handleSeleccion("Paginas echas con plantillas", 1.0, 50000)
+            handleSeleccion("Paginas hechas con plantillas", 1.0, 50000)
           }
         />
         <Card
           imagen={jsImg}
           titulo='Página a medida (JS/Python)'
-          descripcion='En esta opción creamos tu proyecto desde cero utilizando tecnologías robustas como JavaScript y Python. Este enfoque ofrece flexibilidad ilimitada para funcionalidades únicas, integraciones complejas y un rendimiento optimizado. Es la elección estratégica para aplicaciones web específicas, proyectos ambiciosos o empresas que requieren control total, escalabilidad a largo plazo y una base tecnológica completamente personalizada.'
+          descripcion='En esta opción creamos tu proyecto desde cero utilizando tecnologías robustas como JavaScript y Python. Este enfoque ofrece flexibilidad ilimitada para funcionalidades únicas, integraciones complejas y un rendimiento optimizado. Es la elección estratégica para aplicaciones web específicas, proyectos ambiciosos o empresas que requieren control total, escalabilidad a largo plazo y una base tecnológica completamente personalizada. Esta pagina se hizo con JavaScript .'
           precio={150000}
           onSelect={() =>
-            handleSeleccion("Paginas echas a medida", 2.5, 150000)
+            handleSeleccion("Paginas hechas a medida", 2.5, 150000)
           }
         />
       </div>

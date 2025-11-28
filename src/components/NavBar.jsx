@@ -3,30 +3,34 @@ import logo from "../assets/img/logo.png";
 
 export default function NavBar({ total }) {
   return (
-    <nav className='navbar navbar-expand-lg bg-body-tertiary fixed-top'>
+    <nav className='navbar navbar-expand-lg bg-dark  fixed-top'>
       <div className='container-fluid'>
         <Link className='navbar-brand' to='/'>
           <img
+            cl
             src={logo}
             alt='Logo'
             style={{ height: "70px", marginRight: "20px" }}
           />
-          WCP
         </Link>
         <div className='collapse navbar-collapse' id='navbarNav'>
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <Link className='nav-link active' aria-current='page' to='/'>
+              <Link
+                className='nav-link active text-white'
+                aria-current='page'
+                to='/'
+              >
                 Home
               </Link>
             </li>
-            <li className='nav-item'>
-              <Link className='nav-link' to='/tipo'>
+            <li className='nav-item '>
+              <Link className='nav-link text-white' to='/tipo'>
                 Presupuesto
               </Link>
             </li>
             <li className='nav-item'>
-              <Link className='nav-link' to='/contacto'>
+              <Link className='nav-link text-white' to='/contacto'>
                 Contacto
               </Link>
             </li>
