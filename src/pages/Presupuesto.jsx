@@ -28,7 +28,7 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   }, [setMultiplicador, setTotal]);
 
   const toggleServicio = (serv) => {
-    setInteraccionUsuario(true); // Marcar que el usuario interactuó
+    setInteraccionUsuario(true);
     const yaSeleccionado = !!seleccionados[serv.id];
     setSeleccionados((prev) => ({
       ...prev,
@@ -37,7 +37,6 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   };
 
   useEffect(() => {
-    // Calcular el total cada vez que cambian seleccionados, baseValue o multiplicador
     const sumaServicios = Object.entries(seleccionados)
       .filter(([, seleccionado]) => seleccionado)
       .reduce((acc, [id]) => {
@@ -47,19 +46,18 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
     const nuevoTotal = baseValue + sumaServicios;
     setTotal(nuevoTotal);
 
-    // Aplicar descuentos solo si el usuario interactuó y el total es mayor o igual a 500,000
     if (interaccionUsuario && nuevoTotal >= 500000) {
       let descuentoCalculado = 0;
       if (nuevoTotal >= 1000000) {
-        descuentoCalculado = nuevoTotal * 0.2; // 20% de descuento
+        descuentoCalculado = nuevoTotal * 0.2;
       } else {
-        descuentoCalculado = nuevoTotal * 0.1; // 10% de descuento
+        descuentoCalculado = nuevoTotal * 0.1;
       }
       setDescuento(descuentoCalculado);
       setTotalConDescuento(nuevoTotal - descuentoCalculado);
     } else {
       setDescuento(0);
-      setTotalConDescuento(0); // No mostrar total con descuento si no hay descuento
+      setTotalConDescuento(0);
     }
   }, [seleccionados, baseValue, multiplicador, setTotal, interaccionUsuario]);
 
@@ -70,7 +68,7 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
 
   return (
     <div className='container h-100 mt-5 pt-5 pb-4'>
-      <h2 className='text-center text-primary m-3'>
+      <h2 className='text-center text-primary p-3 m-3'>
         Servicios disponibles para: <span className='text-success'>{tipo}</span>
       </h2>
       <div className='d-flex flex-wrap justify-content-center gap-4'>

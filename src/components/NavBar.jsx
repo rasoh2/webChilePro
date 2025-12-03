@@ -3,14 +3,14 @@ import logo from "../assets/img/unnamed.jpg";
 
 export default function NavBar({ total }) {
   return (
-    <nav className='navbar navbar-expand-lg bg-dark  fixed-top'>
+    <nav className='navbar navbar-expand-lg bg-dark navbar-dark fixed-top'>
       <div className='container-fluid'>
         <Link className='navbar-brand' to='/'>
           <img
             cl
             src={logo}
             alt='Logo'
-            style={{ height: "70px", marginRight: "20px" }}
+            style={{ height: "60px", marginRight: "20px" }}
           />
         </Link>
         <div className='collapse navbar-collapse' id='navbarNav'>

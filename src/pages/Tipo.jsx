@@ -11,8 +11,11 @@ export default function Tipo() {
   };
 
   return (
-    <div className='container mt-5 pt-5 pb-4' style={{ marginTop: "100px" }}>
-      <h2 className='text-center mb-4 '>Elige el tipo de proyecto</h2>
+    <div
+      className='container mt-5 pt-5 pb-4 vh-80'
+      style={{ marginTop: "100px" }}
+    >
+      <h2 className='text-center mb-5 m-4 '>Elige el tipo de proyecto</h2>
       <div
         className='d-flex flex-wrap text-center justify-content-evenly gap-4'
         style={{ minHeight: "300px" }}

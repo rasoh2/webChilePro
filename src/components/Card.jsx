@@ -8,7 +8,7 @@ export default function Card({
   return (
     <div
       className='card shadow text-center d-flex flex-column align-items-center'
-      style={{ width: "22rem" }}
+      style={{ width: "28rem" }}
     >
       <img src={imagen} className='card-img-top p-2' alt={titulo} />
 

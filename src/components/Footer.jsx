@@ -7,10 +7,7 @@ export default function Footer() {
           reservados.
         </p>
         <p className='mb-0'>
-          <a
-            href='https://webchilepro.com'
-            className='text-white text-decoration-none'
-          >
+          <a href='https://webchilepro.netlify.app/' className='text-white text-decoration-none'>
             Visítanos en webchilepro.com
           </a>
         </p>

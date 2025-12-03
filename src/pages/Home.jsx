@@ -3,11 +3,12 @@ import Carousel from "../components/Carousel";
 
 export default function Home() {
   return (
-    <div className='container text-center py-5' style={{ marginTop: "100px" }}>
+    <div className='container text-center py-4' style={{ marginTop: "93px" }}>
       <div className='mb-5'>
         <Carousel />
       </div>
-      <h1 className='"text-center fw-bold display-5 text-primary "'>
+      <h1 className='"text-center fw-bold display-5 text-primary '>
+        {" "}
         💻 WebChilePro
       </h1>
       <p className='lead text-center text-secondary'>

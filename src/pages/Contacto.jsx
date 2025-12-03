@@ -10,10 +10,18 @@ export default function Contacto() {
   };
 
   return (
-    <div className='container-fluid w-100 my-5'>
-      <div className='row justify-content-center'>
+    <div
+      className='container-fluid mt-5'
+      style={{
+        minHeight: "81vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+      }}
+    >
+      <div className='row justify-content-center mt-5'>
         <div className='col-lg-8 col-xl-6'>
-          <h2 className='text-center mb-4'>Contáctenos</h2>
+          <h2 className='text-center mb-4 mt-5'>Contáctenos</h2>
           <div className='alert alert-info text-center mb-4'>
             {presupuesto > 0
               ? `Presupuesto estimado: $${Number(presupuesto).toLocaleString()}`
