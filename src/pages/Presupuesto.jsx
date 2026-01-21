@@ -67,13 +67,22 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
   }
 
   return (
-    <div className='container h-100 mt-5 pt-5 pb-4'>
-      <h2 className='text-center text-primary p-3 m-3'>
-        Servicios disponibles para: <span className='text-success'>{tipo}</span>
-      </h2>
-      <div className='d-flex flex-wrap justify-content-center gap-4'>
+    <main className='container mt-5 pt-5 pb-5' style={{ minHeight: "85vh" }}>
+      <div className='text-center mb-5'>
+        <h2 className='display-5 fw-bold gradient-text mb-3'>
+          🛠️ Servicios Disponibles
+        </h2>
+        <p className='lead mb-2'>
+          Para: <span className='badge bg-success fs-5 px-4 py-2'>{tipo}</span>
+        </p>
+        <p className='text-muted'>
+          Selecciona los servicios adicionales que necesitas
+        </p>
+      </div>
+
+      <div className='row g-4 mb-5'>
         {servicios.map((serv) => (
-          <div key={serv.id}>
+          <div key={serv.id} className='col-lg-4 col-md-6'>
             <ServicioCard
               nombre={serv.nombre}
               descripcion={serv.descripcion}
@@ -84,35 +93,93 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
           </div>
         ))}
       </div>
-      <div className='row mt-5'>
-        <div className='col-md-4'></div>
-        <div className='col-md-4 text-center'>
-          <h4>Total: ${total.toLocaleString()}</h4>
-          {descuento > 0 && (
-            <>
-              <h5 className='text-success'>
-                Descuento aplicado: -${descuento.toLocaleString()}
-              </h5>
-              <h4>
-                Total con descuento: ${totalConDescuento.toLocaleString()}
-              </h4>
-            </>
-          )}
-          <Link
-            to='/contacto'
-            state={{ presupuesto: descuento > 0 ? totalConDescuento : total }}
-            className='btn btn-success mt-3'
+
+      <div className='row justify-content-center mt-5'>
+        <div className='col-lg-6 col-md-8'>
+          <div
+            className='card border-0 shadow-lg p-4'
+            style={{
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              borderRadius: "20px",
+              color: "white",
+            }}
           >
-            Ir a Contacto y enviar presupuesto
-          </Link>
+            <h3 className='text-center mb-4 fw-bold'>
+              📊 Resumen del Presupuesto
+            </h3>
+
+            <div className='d-flex justify-content-between mb-3 pb-3 border-bottom border-light'>
+              <span className='fs-5'>Subtotal:</span>
+              <span className='fs-5 fw-bold'>${total.toLocaleString()}</span>
+            </div>
+
+            {descuento > 0 && (
+              <>
+                <div className='alert alert-success mb-3' role='alert'>
+                  <strong>🎉 ¡Felicidades!</strong>
+                  <p className='mb-0 mt-2'>
+                    Has obtenido un descuento de{" "}
+                    <strong>{total >= 1000000 ? "20%" : "10%"}</strong>
+                  </p>
+                </div>
+                <div className='d-flex justify-content-between mb-3 pb-3 border-bottom border-light'>
+                  <span className='fs-5'>Descuento:</span>
+                  <span className='fs-5 fw-bold text-warning'>
+                    -${descuento.toLocaleString()}
+                  </span>
+                </div>
+                <div className='d-flex justify-content-between mb-4'>
+                  <span className='fs-4 fw-bold'>Total Final:</span>
+                  <span className='fs-3 fw-bold'>
+                    ${totalConDescuento.toLocaleString()}
+                  </span>
+                </div>
+              </>
+            )}
+
+            {descuento === 0 && (
+              <div className='d-flex justify-content-between mb-4'>
+                <span className='fs-4 fw-bold'>Total:</span>
+                <span className='fs-3 fw-bold'>${total.toLocaleString()}</span>
+              </div>
+            )}
+
+            {total < 500000 && total > 0 && (
+              <div className='alert alert-info mb-3' role='alert'>
+                <small>
+                  💡 Agrega ${(500000 - total).toLocaleString()} más para
+                  obtener 10% de descuento
+                </small>
+              </div>
+            )}
+
+            {total >= 500000 && total < 1000000 && (
+              <div className='alert alert-info mb-3' role='alert'>
+                <small>
+                  💡 Agrega ${(1000000 - total).toLocaleString()} más para
+                  obtener 20% de descuento
+                </small>
+              </div>
+            )}
+
+            <Link
+              to='/contacto'
+              state={{ presupuesto: descuento > 0 ? totalConDescuento : total }}
+              className='btn btn-light btn-lg w-100 fw-bold'
+              style={{ borderRadius: "12px" }}
+              aria-label='Ir a página de contacto con presupuesto'
+            >
+              🚀 Solicitar Presupuesto
+            </Link>
+          </div>
         </div>
-        <div className='col-md-4'></div>
       </div>
+
       <div className='d-none'>
         <ResultadoPresupuesto
           total={descuento > 0 ? totalConDescuento : total}
         />
       </div>
-    </div>
+    </main>
   );
 }
