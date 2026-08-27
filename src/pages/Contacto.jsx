@@ -9,6 +9,7 @@ export default function Contacto() {
     email: "",
     mensaje: "",
   });
+  const [formEnviado, setFormEnviado] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -30,12 +31,15 @@ export default function Contacto() {
     `;
 
     console.log(mensaje);
-    alert(
-      "✅ ¡Gracias por contactarnos! Tu mensaje ha sido enviado correctamente. Te responderemos pronto.",
-    );
+    setFormEnviado(true);
 
     // Limpiar formulario
     setFormData({ nombre: "", email: "", mensaje: "" });
+
+    // Ocultar alerta después de 4 segundos
+    setTimeout(() => {
+      setFormEnviado(false);
+    }, 4000);
   };
 
   return (
@@ -48,6 +52,8 @@ export default function Contacto() {
         justifyContent: "center",
       }}
     >
+      <title>Solicita tu Presupuesto Web | WebChilePro</title>
+      <meta name="description" content="Envíanos tu cotización estimada y nos pondremos en contacto contigo para iniciar el desarrollo de tu sitio web." />
       <div className='row justify-content-center mt-5 pt-5'>
         <div className='col-lg-8 col-xl-6'>
           <div className='text-center mb-4'>
@@ -58,6 +64,29 @@ export default function Contacto() {
               Estamos aquí para ayudarte con tu proyecto web
             </p>
           </div>
+
+          {formEnviado && (
+            <div
+              className='alert alert-success border-0 shadow-sm fade show mb-4 py-3'
+              style={{
+                borderRadius: "16px",
+                background: "linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)",
+                color: "#1e4620",
+              }}
+              role='status'
+              aria-live='polite'
+            >
+              <div className='d-flex align-items-center'>
+                <span className='fs-3 me-3'>✅</span>
+                <div>
+                  <strong>¡Envío Exitoso!</strong>
+                  <span className='d-block mt-1' style={{ fontSize: "0.95rem" }}>
+                    Tu mensaje ha sido enviado correctamente. Te responderemos pronto.
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div
             className='alert shadow-custom mb-4'

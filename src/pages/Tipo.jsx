@@ -15,6 +15,8 @@ export default function Tipo() {
       className='container mt-5 pt-5 pb-5'
       style={{ marginTop: "100px", minHeight: "80vh" }}
     >
+      <title>Selecciona tu Tipo de Proyecto | WebChilePro</title>
+      <meta name="description" content="Elige el tipo de sitio web que necesitas (Landing Page, Web Corporativa, Tienda Online) para iniciar tu cotización." />
       <div className='text-center mb-5'>
         <h2 className='display-5 fw-bold gradient-text mb-3'>
           🚀 Elige el Tipo de Proyecto

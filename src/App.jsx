@@ -10,7 +10,6 @@ import Footer from "./components/Footer.jsx";
 
 export default function App() {
   const [total, setTotal] = useState(0);
-  const [multiplicador, setMultiplicador] = useState(1); // multiplicador global
 
   return (
     <BrowserRouter>
@@ -19,7 +18,7 @@ export default function App() {
         <Route path='/' element={<Home />} />
         <Route
           path='/tipo'
-          element={<Tipo setMultiplicador={setMultiplicador} />}
+          element={<Tipo />}
         />
         <Route
           path='/presupuesto'
@@ -27,8 +26,6 @@ export default function App() {
             <Presupuesto
               total={total}
               setTotal={setTotal}
-              multiplicador={multiplicador}
-              setMultiplicador={setMultiplicador}
             />
           }
         />

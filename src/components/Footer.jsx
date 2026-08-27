@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer
@@ -14,24 +16,24 @@ export default function Footer() {
           <div className='col-md-4 mb-3 mb-md-0'>
             <h6 className='fw-bold mb-2'>Enlaces Rápidos</h6>
             <div className='d-flex flex-column small'>
-              <a
-                href='/'
+              <Link
+                to='/'
                 className='text-white text-decoration-none mb-1 hover-scale'
               >
                 Inicio
-              </a>
-              <a
-                href='/tipo'
+              </Link>
+              <Link
+                to='/tipo'
                 className='text-white text-decoration-none mb-1 hover-scale'
               >
                 Presupuesto
-              </a>
-              <a
-                href='/contacto'
+              </Link>
+              <Link
+                to='/contacto'
                 className='text-white text-decoration-none mb-1 hover-scale'
               >
                 Contacto
-              </a>
+              </Link>
             </div>
           </div>
           <div className='col-md-4'>

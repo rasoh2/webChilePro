@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
+import { vi } from "vitest";
 import Card from "./Card";
 
 describe("Card", () => {
@@ -28,7 +29,7 @@ describe("Card", () => {
   });
 
   it("llama a onSelect al hacer click en el botón", () => {
-    const onSelectMock = jest.fn();
+    const onSelectMock = vi.fn();
     render(
       <Card
         imagen='img.jpg'
@@ -38,7 +39,7 @@ describe("Card", () => {
         onSelect={onSelectMock}
       />
     );
-    fireEvent.click(screen.getByText("Seleccionar"));
+    fireEvent.click(screen.getByText(/Seleccionar/));
     expect(onSelectMock).toHaveBeenCalled();
   });
 });

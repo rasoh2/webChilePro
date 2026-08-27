@@ -4,6 +4,8 @@ import Carousel from "../components/Carousel";
 export default function Home() {
   return (
     <main className='container text-center py-5' style={{ marginTop: "93px" }}>
+      <title>WebChilePro - Cotizador de Proyectos Web | INACAP</title>
+      <meta name="description" content="Inicio de WebChilePro. Calcula el presupuesto de tu sitio web de manera inteligente, transparente e instantánea." />
       <div className='mb-5' id='carousel-section'>
         <Carousel />
       </div>

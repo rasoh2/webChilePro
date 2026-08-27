@@ -1,65 +1,44 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { servicios } from "../db/data.js";
 import ServicioCard from "../components/ServicioCard";
 import ResultadoPresupuesto from "../components/ResultadoPresupuesto";
 import { Link } from "react-router-dom";
+import { useCalculoPresupuesto } from "../hooks/useCalculoPresupuesto.js";
 
-export default function Presupuesto({ total, setTotal, setMultiplicador }) {
+export default function Presupuesto({ total, setTotal }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const { tipo, multiplicador = 1, base = 0 } = location.state || {};
-  const [seleccionados, setSeleccionados] = useState({});
-  const [baseValue, setBaseValue] = useState(base);
-  const [totalConDescuento, setTotalConDescuento] = useState(0);
-  const [descuento, setDescuento] = useState(0);
-  const [interaccionUsuario, setInteraccionUsuario] = useState(false);
 
-  useEffect(() => {
-    setBaseValue(base);
-    setSeleccionados({});
-  }, [base]);
-
-  useEffect(() => {
-    return () => {
-      setMultiplicador(1);
-      setTotal(0);
-    };
-  }, [setMultiplicador, setTotal]);
-
-  const toggleServicio = (serv) => {
-    setInteraccionUsuario(true);
-    const yaSeleccionado = !!seleccionados[serv.id];
-    setSeleccionados((prev) => ({
-      ...prev,
-      [serv.id]: !yaSeleccionado,
-    }));
-  };
-
-  useEffect(() => {
-    const sumaServicios = Object.entries(seleccionados)
-      .filter(([, seleccionado]) => seleccionado)
-      .reduce((acc, [id]) => {
-        const serv = servicios.find((s) => s.id === Number(id));
-        return serv ? acc + Number(serv.precio) * multiplicador : acc;
-      }, 0);
-    const nuevoTotal = baseValue + sumaServicios;
-    setTotal(nuevoTotal);
-
-    if (interaccionUsuario && nuevoTotal >= 500000) {
-      let descuentoCalculado = 0;
-      if (nuevoTotal >= 1000000) {
-        descuentoCalculado = nuevoTotal * 0.2;
-      } else {
-        descuentoCalculado = nuevoTotal * 0.1;
-      }
-      setDescuento(descuentoCalculado);
-      setTotalConDescuento(nuevoTotal - descuentoCalculado);
-    } else {
-      setDescuento(0);
-      setTotalConDescuento(0);
+  // Recuperar del sessionStorage si location.state es null (F5)
+  const routeState = location.state || (() => {
+    try {
+      const saved = sessionStorage.getItem("webchilepro_route_state");
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
     }
-  }, [seleccionados, baseValue, multiplicador, setTotal, interaccionUsuario]);
+  })();
+
+  const { tipo, multiplicador = 1, base = 0 } = routeState || {};
+
+  // Guardar en sessionStorage si es válido (viene de navegación explícita)
+  useEffect(() => {
+    if (location.state) {
+      try {
+        sessionStorage.setItem("webchilepro_route_state", JSON.stringify(location.state));
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }, [location.state]);
+
+  const {
+    seleccionados,
+    descuento,
+    totalConDescuento,
+    toggleServicio,
+  } = useCalculoPresupuesto({ base, multiplicador, setTotal });
 
   if (!tipo) {
     navigate("/tipo");
@@ -68,6 +47,8 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
 
   return (
     <main className='container mt-5 pt-5 pb-5' style={{ minHeight: "85vh" }}>
+      <title>Cotiza tus Servicios Adicionales | WebChilePro</title>
+      <meta name="description" content="Selecciona los servicios adicionales (Dominio, Hosting, SEO, Chatbot IA, Webpay) para personalizar tu presupuesto web." />
       <div className='text-center mb-5'>
         <h2 className='display-5 fw-bold gradient-text mb-3'>
           🛠️ Servicios Disponibles
@@ -175,9 +156,10 @@ export default function Presupuesto({ total, setTotal, setMultiplicador }) {
         </div>
       </div>
 
-      <div className='d-none'>
+      <div className='d-flex justify-content-center mt-4'>
         <ResultadoPresupuesto
           total={descuento > 0 ? totalConDescuento : total}
+          subtotal={total}
         />
       </div>
     </main>
